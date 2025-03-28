@@ -11,7 +11,15 @@ set relativenumber
 set ignorecase
 set timeoutlen=500 
 set termwinsize=10x " Set terminal Height to 10 rows
+
+" ****** NETRW - CONFIG ( REMOVE BANNER ) ******
 let g:netrw_banner = 0
+" ****** NETRW - CONFIG ( PRESERVE CURRENT DIRECTORY) ******
+let g:netrw_keepdir = 1
+" ****** NETRW - CONFIG ( TREE STYLE ) ******
+let g:netrw_liststyle = 3
+" ****** NETRW - CONFIG ( SORT BY NAME ) ******
+let g:netrw_sort_options ='1' 
 
 " ****** THEME CONFIG ******
 set nocompatible
