@@ -9,7 +9,7 @@ call plug#end()
 " ****** GENERAL SETUP ******
 set relativenumber
 set ignorecase
-set timeoutlen=200 
+set timeoutlen=500 
 set termwinsize=10x " Set terminal Height to 10 rows
 let g:netrw_banner = 0
 
@@ -33,9 +33,14 @@ let mapleader = " "
 
 " ****** TERMINAL ( OPEN ) ******
 nnoremap <leader>t :botright term ++close<CR>
+" ****** TERMINAL ( CLEAR + CLOSE ) ******
+tnoremap <c-d> :Tclear<CR><c-d>
+" ****** TERMINAL ( ENABLE SCROLL MODE ) ****** 
+tnoremap <c-n> <c-\><c-n>
 
 " ****** BUFFER FILE ( QUIT ) ******
 nnoremap <leader>q :q<CR>
+" ****** BUFFER FILE ( FORCE QUIT ) ******
 nnoremap <leader>qq :q!<CR>
 " ****** BUFFER FILE ( SAVE ) ******
 nnoremap <leader>w :w<CR>
@@ -45,16 +50,37 @@ nnoremap <leader><leader>v :rightbelow vs new<CR>
 " ****** BUFFER SPLIT ( HORIZONTAL ) ******
 nnoremap <leader><leader>h :botright split new<CR>
 
-" ****** BUFFER NAVIGATION ******
+" ****** BUFFER NAVIGATION ( LEFT BUFFER ) ******
 nnoremap <c-h> <c-w>h
+" ****** BUFFER NAVIGATION ( DOWN BUFFER ) ******
 nnoremap <c-j> <c-w>j
+" ****** BUFFER NAVIGATION ( UP BUFFER ) ******
 nnoremap <c-k> <c-w>k
+" ****** BUFFER NAVIGATION ( RIGHT BUFFER ) ******
 nnoremap <c-l> <c-w>l
 
-" ****** SEARCH BY FILES ( ALL ) ******
+" ****** FILES SEARCH ( PROJECT ) ******
 nnoremap <leader>pf :Files<CR>
-" ****** SEARCH BY FILES ( GIT TRACKED ) ******
+" ****** FILES SEARCH ( PROJECT GIT TRACKED ) ******
 nnoremap <leader>pg :GFiles<CR>
 
 " ****** EXIT INSERT MODE ****** 
 inoremap jk <ESC> " Exit Insert Mode with jk 
+
+" ****** JAVA - MAVEN CLEAN ******
+nnoremap mac :botright term ++close<CR>mvn clean<CR>
+" ****** JAVA - MAVEN INSTALL ******
+nnoremap mai :botright term ++close<CR>mvn install<CR>
+" ****** JAVA - MAVEN SPRING BOOT RUN ******
+nnoremap msb :botright term ++close<CR>mvn spring-boot:run<CR>
+
+" ****** JAVA - COMMENT SINGLE ( NORMAL ) ******
+autocmd FileType java nnoremap <Leader>cc :s/^/\/\/ /<CR>
+" ****** JAVA - COMMENT SINGLE ( VISUAL ) ******
+autocmd FileType java vnoremap <Leader>cc :s/^/\/\/ /<CR>
+
+" ****** JAVA - UNCOMMENT SINGLE ( NORMAL ) ******
+autocmd FileType java nnoremap <Leader>cu :s/^\/\/ //<CR>
+" ****** JAVA - UNCOMMENT SINGLE ( VISUAL ) ******
+autocmd FileType java vnoremap <Leader>cu :s/^\/\/ //<CR>
+
